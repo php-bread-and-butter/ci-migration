@@ -1,0 +1,25 @@
+{
+	"name": "php-bread-and-butter/codeignitermigration",
+	"description": "Codeigniter Migration",
+	"type": "library",
+	"version": "1.0.1",
+	"homepage": "https://github.com/php-bread-and-butter/ci-migration",
+	"license": "MIT",
+	"authors": [
+		{
+			"name": "PHP is Bread and Butter",
+			"email": "ch.subhadeep@gmail.com",
+			"homepage": "https://github.com/php-bread-and-butter",
+			"role": "Developer"
+		}
+	],
+	"require": {
+		"php": ">=7.2",
+		"ext-gd": "*",
+		"ext-json": "*",
+		"ext-mbstring": "*"
+	},
+	"require-dev": {
+		"phpunit/phpunit": "^8.3"
+	}
+}
