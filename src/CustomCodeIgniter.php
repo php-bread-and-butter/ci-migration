@@ -44,7 +44,7 @@ $_SERVER['REMOTE_ADDR'] = $_SERVER['SERVER_NAME'] = '127.0.0.1';
  * LOAD THE Dotenv
  * --------------------------------------------------------------------
  */
-if (getenv('HOME') === false) {
+if (getenv('HOME') === false && (getenv('HOMEDRIVE') === false || getenv('HOMEPATH') === false)) {
 	putenv('HOME=/home/www-data');
 }
 require_once ROOTDIR . 'vendor/autoload.php';

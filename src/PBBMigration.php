@@ -83,6 +83,26 @@ class PBBMigration
     }
 
     /**
+     * Guess the table name from command
+     * @return string tableName
+     */
+    public function guessTableName($name)
+    {
+		$cleanup = str_replace(array(
+			"Create_",
+			"Add_New_",
+			"Update_",
+			"Rename_",
+			"Remove_",
+			"Table_",
+			"Column_",
+			"_Table",
+			), "", $name);
+
+		return strtolower($cleanup);
+    }
+
+    /**
      * Execute the command
      * @return boolean TRUE on success; FALSE on failure
      */
@@ -97,6 +117,7 @@ class PBBMigration
         $version    = date('YmdHis');
         $className  = 'Migration_'.$name;
         $fileName   = $version.'_'.strtolower($name).'.php';
+		$tableName  = $this->guessTableName($name);
         $fullFileName = __DIR__.'/../../../../'.$this->application_folder.'/migrations/'.$fileName;
 
         $content = <<<CODE
@@ -108,7 +129,7 @@ class $className extends CI_Migration
     {
         // this up() migration is auto-generated, please modify it to your needs
         // Drop table 'table_name' if it exists
-        \$this->dbforge->drop_table('$this->name', true);
+        \$this->dbforge->drop_table('$tableName', true);
 
         // Table structure for table 'table_name'
         \$this->dbforge->add_field(array(
@@ -131,7 +152,7 @@ class $className extends CI_Migration
             )
         ));
         \$this->dbforge->add_key('id', true);
-        if(\$this->dbforge->create_table('$this->name')) {
+        if(\$this->dbforge->create_table('$tableName')) {
            echo "\\n\\rTable $this->name migrated.\\n\\r";
         }
     }
@@ -139,7 +160,7 @@ class $className extends CI_Migration
     public function down()
     {
         // this down() migration is auto-generated, please modify it to your needs
-        \$this->dbforge->drop_table('$this->name', true);
+        \$this->dbforge->drop_table('$tableName', true);
     }
 }
 CODE;
