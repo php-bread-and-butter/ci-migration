@@ -70,5 +70,6 @@ $ php vendor/php-bread-and-butter/codeignitermigration/migrate
 
 The migration can be rolled back using 
 ```
-$ php vendor/php-bread-and-butter/codeignitermigration/suppress
+$ php vendor/php-bread-and-butter/codeignitermigration/suppress ${VERSION}
 ```
+Replace ${VERSION} with {YmdHis}, where {YmdHis} would be the timestamp of previous migration file, like 20211002092605
