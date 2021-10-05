@@ -139,11 +139,15 @@ class $className extends CI_Migration
                 'unsigned' => true,
                 'auto_increment' => true
             ),
-            'created_at' => array(
-                'type' => 'TIMESTAMP',
-                'null' => false,
-                'default CURRENT_TIMESTAMP' => NULL,
-            ),
+            'modified_date' => array(
+				'type' => 'TIMESTAMP',
+				'default NULL ON UPDATE CURRENT_TIMESTAMP' => NULL,
+			),
+			'create_date' => array(
+				'type' => 'TIMESTAMP',
+                'default' => 'CURRENT_TIMESTAMP',
+                'null' => true,
+			),
             'status' => array(
                 'type' => 'ENUM',
                 'constraint' => ['A','P','D','R'],

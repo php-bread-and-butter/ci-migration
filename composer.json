@@ -2,7 +2,7 @@
 	"name": "php-bread-and-butter/codeignitermigration",
 	"description": "Codeigniter Migration",
 	"type": "library",
-	"version": "1.2.0",
+	"version": "1.2.1",
 	"homepage": "https://github.com/php-bread-and-butter/ci-migration",
 	"license": "MIT",
 	"authors": [
