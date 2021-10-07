@@ -63,6 +63,15 @@ class Migration_Add_New_Post_Table extends CI_Migration
 ```
 You can modify the file according to your need.
 
+Alternate usage of the command
+```
+$ php ci migration:bare add_new_column_to_post_table
+$ php ci migration:bare modify_post_table
+$ php ci migration:bare update_post_table
+$ php ci migration:bare rename_post_table
+$ php ci migration:bare remove_post_table
+```
+
 Now execute migrate 
 ```
 $ php vendor/php-bread-and-butter/codeignitermigration/migrate
