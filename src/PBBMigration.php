@@ -169,12 +169,12 @@ class $className extends CI_Migration
 			),
             'created_at' => array(
                 'type' => 'TIMESTAMP',
-                'null' => false,
-                'default CURRENT_TIMESTAMP' => NULL,
+                'default' => 'CURRENT_TIMESTAMP',
+                'null' => true,
             ),
             'status' => array(
                 'type' => 'ENUM',
-                'constraint' => ['A','P','D','R'],
+                'constraint' => ['A','P','D'],
                 'null' => false,
                 'default' => 'P',
             )
