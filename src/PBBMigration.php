@@ -163,6 +163,10 @@ class $className extends CI_Migration
                 'unsigned' => true,
                 'auto_increment' => true
             ),
+			'modified_date' => array(
+				'type' => 'TIMESTAMP',
+				'default NULL ON UPDATE CURRENT_TIMESTAMP' => NULL,
+			),
             'created_at' => array(
                 'type' => 'TIMESTAMP',
                 'null' => false,
