@@ -118,8 +118,8 @@ class PBBMigration
 
 		$name       = $this->convertCase($this->name);
 		$version    = date('YmdHis');
-		$className  = 'Migration_' . $version . '_' . $name;
-		$fileName   = $version . '_' . strtolower($name) . '.php';
+		$className  = 'Migration_' . $name . '_' . $version;
+		$fileName   = $version . '_' . strtolower($name) . '_' . $version . '.php';
 		$tableName  = $this->guessTableName($name);
 		$fullFileName = APPPATH . '/migrations/' . $fileName;
 		$content = $this->createTableSnippet($className, $tableName);
