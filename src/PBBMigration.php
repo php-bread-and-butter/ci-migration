@@ -118,7 +118,7 @@ class PBBMigration
 
 		$name       = $this->convertCase($this->name);
 		$version    = date('YmdHis');
-		$className  = 'Migration_' . $name;
+		$className  = 'Migration_' . $version . '_' . $name;
 		$fileName   = $version . '_' . strtolower($name) . '.php';
 		$tableName  = $this->guessTableName($name);
 		$fullFileName = APPPATH . '/migrations/' . $fileName;
