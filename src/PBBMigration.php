@@ -224,7 +224,9 @@ class $className extends CI_Migration
 
     public function down()
     {
-        \$this->dbforge->drop_column('$tableName', 'status');
+		if(\$this->db->field_exists('status', '$tableName')) {
+        	\$this->dbforge->drop_column('$tableName', 'status');
+		}
     }
 }
 CODE;
@@ -240,33 +242,37 @@ class $className extends CI_Migration
 {
     public function up()
     {
-        \$fields = array(
-            'status' => array(
-                'name' => 'status',
-                'type' => 'ENUM',
-                'constraint' => ['START', 'SUBMITTED', 'APPROVED'],
-                'null' => false,
-                'default' => 'START',
-            ),
-        );
-        
-        if(\$this->dbforge->modify_column('$tableName', \$fields)) {
-           echo "\\n\\rTable $tableName modified.\\n\\r";
+		if(\$this->db->field_exists('status', '$tableName')) {
+			\$fields = array(
+				'status' => array(
+					'name' => 'status',
+					'type' => 'ENUM',
+					'constraint' => ['START', 'SUBMITTED', 'APPROVED'],
+					'null' => false,
+					'default' => 'START',
+				),
+			);
+			
+			if(\$this->dbforge->modify_column('$tableName', \$fields)) {
+				echo "\\n\\rTable $tableName modified.\\n\\r";
+			}
         }
     }
 
     public function down()
     {
-        \$fields = array(
-            'status' => array(
-                'name' => 'status',
-                'type' => 'ENUM',
-                'constraint' => ['A', 'P', 'D'],
-                'null' => false,
-                'default' => 'P',
-            ),
-        );
-        \$this->dbforge->modify_column('$tableName', \$fields);
+		if(\$this->db->field_exists('status', '$tableName')) {
+			\$fields = array(
+				'status' => array(
+					'name' => 'status',
+					'type' => 'ENUM',
+					'constraint' => ['A', 'P', 'D'],
+					'null' => false,
+					'default' => 'P',
+				),
+			);
+			\$this->dbforge->modify_column('$tableName', \$fields);
+		}
     }
 }
 CODE;
